@@ -10,7 +10,7 @@ const Footer: React.FC = () => {
           {/* Logo and About */}
           <div>
             <h2 className="text-2xl font-bold mb-4 font-playfair">
-              <span className="text-raaz">RAAZ</span> Holidays
+              <span>RAAZ</span> Holidays
             </h2>
             <p className="mb-4 text-gray-300">
               Your trusted partner for Hajj, Umrah and premium travel services since 2005.
@@ -59,9 +59,9 @@ const Footer: React.FC = () => {
         </div>
         
         {/* Copyright */}
-        <div className="mt-8 pt-6 border-t border-gray-700 text-center text-gray-400">
+        {/* <div className="mt-8 pt-6 border-t border-gray-700 text-center text-gray-400">
           <p>&copy; {new Date().getFullYear()} RAAZ Holidays. All rights reserved.</p>
-        </div>
+        </div> */}
       </div>
     </footer>
   );
