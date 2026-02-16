@@ -55,83 +55,148 @@ const Packages: React.FC = () => {
           </div>
         </section>
       ) : (
-        <>
-          {/* Hajj & Umrah Packages Section */}
-          <section className="py-16 px-4 bg-white -mt-24">
-            <div className="container mx-auto">
-              <div className="bg-white rounded-xl shadow-lg p-8 mb-16">
-                <h2 className="text-2xl font-bold mb-8 font-playfair">
-                  <span className="text-raaz">Hajj & Umrah</span> Packages
-                </h2>
+        // <>
+        //   {/* Hajj & Umrah Packages Section */}
+        //   <section className="py-16 px-4 bg-white -mt-24">
+        //     <div className="container mx-auto">
+        //       <div className="bg-white rounded-xl shadow-lg p-8 mb-16">
+        //         <h2 className="text-2xl font-bold mb-8 font-playfair">
+        //           <span className="text-raaz">Hajj & Umrah</span> Packages
+        //         </h2>
                 
-                {/* Display dedicated Hajj & Umrah packages */}
-                {hajjUmrahPackages.length > 0 ? (
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
-                    {hajjUmrahPackages.map((pkg) => (
-                      <HajjUmrahPackageCard 
-                        key={pkg.id}
-                        title={pkg.title}
-                        image={pkg.image_url}
-                        price={pkg.price}
-                        startDate={pkg.start_date}
-                        endDate={pkg.end_date}
-                        location={pkg.location}
-                        description={pkg.description}
-                        contactNumber={pkg.contact_number}
-                      />
-                    ))}
-                  </div>
-                ) : null}
+        //         {/* Display dedicated Hajj & Umrah packages */}
+        //         {hajjUmrahPackages.length > 0 ? (
+        //           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
+        //             {hajjUmrahPackages.map((pkg) => (
+        //               <HajjUmrahPackageCard 
+        //                 key={pkg.id}
+        //                 title={pkg.title}
+        //                 image={pkg.image_url}
+        //                 price={pkg.price}
+        //                 startDate={pkg.start_date}
+        //                 endDate={pkg.end_date}
+        //                 location={pkg.location}
+        //                 description={pkg.description}
+        //                 contactNumber={pkg.contact_number}
+        //               />
+        //             ))}
+        //           </div>
+        //         ) : null}
 
-                {/* Display Hajj & Umrah packages from general packages */}
-                {hajjUmrahFromGeneral.length > 0 ? (
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {hajjUmrahFromGeneral.map((pkg) => (
-                      <PackageCard 
-                        key={pkg.id}
-                        title={pkg.title}
-                        image={pkg.image_url}
-                        price={pkg.price}
-                        duration={pkg.duration || ''}
-                        description={pkg.description}
-                        contactNumber={pkg.contact_number}
-                        featured={pkg.featured}
-                      />
-                    ))}
-                  </div>
-                ) : null}
+        //         {/* Display Hajj & Umrah packages from general packages */}
+        //         {hajjUmrahFromGeneral.length > 0 ? (
+        //           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        //             {hajjUmrahFromGeneral.map((pkg) => (
+        //               <PackageCard 
+        //                 key={pkg.id}
+        //                 title={pkg.title}
+        //                 image={pkg.image_url}
+        //                 // price={pkg.price}
+        //                 // duration={pkg.duration || ''}
+        //                 // description={pkg.description}
+        //                 contactNumber={pkg.contact_number}
+        //                 featured={pkg.featured}
+        //               />
+        //             ))}
+        //           </div>
+        //         ) : null}
 
-                {hajjUmrahPackages.length === 0 && hajjUmrahFromGeneral.length === 0 && (
-                  <p className="text-center py-4">No Hajj or Umrah packages available at the moment.</p>
-                )}
-              </div>
+        //         {hajjUmrahPackages.length === 0 && hajjUmrahFromGeneral.length === 0 && (
+        //           <p className="text-center py-4">No Hajj or Umrah packages available at the moment.</p>
+        //         )}
+        //       </div>
               
-              <div className="bg-white rounded-xl shadow-lg p-8">
-                <h2 className="text-2xl font-bold mb-8 font-playfair">
-                  <span className="text-raaz">International</span> Tour Packages
-                </h2>
+        //       <div className="bg-white rounded-xl shadow-lg p-8">
+        //         <h2 className="text-2xl font-bold mb-8 font-playfair">
+        //           <span className="text-raaz">International</span> Tour Packages
+        //         </h2>
                 
-                {internationalPackages.length > 0 ? (
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {internationalPackages.map((pkg) => (
-                      <PackageCard 
-                        key={pkg.id}
-                        title={pkg.title}
-                        image={pkg.image_url}
-                        price={pkg.price}
-                        duration={pkg.duration || ''}
-                        description={pkg.description}
-                        contactNumber={pkg.contact_number}
-                        featured={pkg.featured}
-                      />
-                    ))}
-                  </div>
-                ) : (
-                  <p className="text-center py-4">No international packages available at the moment.</p>
-                )}
-              </div>
-            </div>
-          </section>
+        //         {internationalPackages.length > 0 ? (
+        //           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        //             {internationalPackages.map((pkg) => (
+        //               <PackageCard 
+        //                 key={pkg.id}
+        //                 title={pkg.title}
+        //                 image={pkg.image_url}
+        //                 // price={pkg.price}
+        //                 // duration={pkg.duration || ''}
+        //                 // description={pkg.description}
+        //                 contactNumber={pkg.contact_number}
+        //                 featured={pkg.featured}
+        //               />
+        //             ))}
+        //           </div>
+        //         ) : (
+        //           <p className="text-center py-4">No international packages available at the moment.</p>
+        //         )}
+        //       </div>
+        //     </div>
+        //   </section>
+        // </>
+        <>
+        {/* Hajj & Umrah + International Packages Section */}
+<section className="py-24 px-4 bg-white -mt-24">
+  <div className="container mx-auto">
+    
+    {/* Hajj & Umrah Section */}
+    <div className="mb-24">
+      <div className="flex flex-col mb-12">
+        <h2 className="text-2xl font-bold mb-8 font-playfair">
+                   <span className="text-raaz">Hajj & Umrah</span> Packages
+              </h2>
+        {/* <div className="h-1 w-16 bg-raaz mt-4"></div> */}
+      </div>
+      
+      {(hajjUmrahPackages.length > 0 || hajjUmrahFromGeneral.length > 0) ? (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+          {/* Combined list of Hajj & Umrah packages */}
+          {[...hajjUmrahPackages, ...hajjUmrahFromGeneral].map((pkg) => (
+            <PackageCard 
+              key={pkg.id}
+              title={pkg.title}
+              image={pkg.image_url}
+              contactNumber={pkg.contact_number || '919745500598'}
+              featured={pkg.featured}
+            />
+          ))}
+        </div>
+      ) : (
+        <div className="py-16 text-center border border-dashed border-gray-100 rounded-2xl">
+          <p className="text-gray-400 font-playfair italic">New spiritual journeys are being scheduled soon.</p>
+        </div>
+      )}
+    </div>
+
+    {/* International Tour Packages Section */}
+    <div>
+      <div className="flex flex-col mb-12">
+        <h2 className="text-2xl font-bold mb-8 font-playfair">
+                  <span className="text-raaz">International</span> Tour Packages
+                 </h2>
+        {/* <div className="h-1 w-16 bg-raaz mt-4"></div> */}
+      </div>
+      
+      {internationalPackages.length > 0 ? (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+          {internationalPackages.map((pkg) => (
+            <PackageCard 
+              key={pkg.id}
+              title={pkg.title}
+              image={pkg.image_url}
+              contactNumber={pkg.contact_number || '919745500598'}
+              featured={pkg.featured}
+            />
+          ))}
+        </div>
+      ) : (
+        <div className="py-16 text-center border border-dashed border-gray-100 rounded-2xl">
+          <p className="text-gray-400 font-playfair italic">New international destinations coming soon.</p>
+        </div>
+      )}
+    </div>
+
+  </div>
+</section>
         </>
       )}
 

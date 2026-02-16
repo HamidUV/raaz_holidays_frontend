@@ -16,7 +16,7 @@ const About: React.FC = () => {
         {/* Background Image */}
         <div 
           className="absolute inset-0 bg-cover bg-center z-0 h-80"
-          style={{ backgroundImage: `url(https://images.unsplash.com/photo-1649972904349-6e44c42644a7?q=80&w=2070)` }}
+          style={{ backgroundImage: `url(https://i.pinimg.com/736x/43/0e/41/430e41b87e5b03345e629cc83ebe8013.jpg)` }}
         >
           <div className="absolute inset-0 bg-black bg-opacity-60"></div>
         </div>

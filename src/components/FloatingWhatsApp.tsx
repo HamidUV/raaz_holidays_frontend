@@ -6,8 +6,19 @@ const FloatingWhatsApp: React.FC = () => {
   const [isHovered, setIsHovered] = useState(false);
 
   const handleWhatsAppClick = () => {
-    window.open(`https://wa.me/919745500598`, '_blank');
-  };
+  const phoneNumber = "919745500598";
+  
+  // Professional message with a line break
+  const message = "Hello Raaz Holidays! \n\nI'm interested in know more about your travel packages and services. Could you please provide me with more details? Thank you!";
+
+  // Encode the message to handle spaces and special characters
+  const encodedMessage = encodeURIComponent(message);
+  
+  // Official WhatsApp API link
+  const whatsappUrl = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodedMessage}`;
+
+  window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+};
 
   return (
     <div className="fixed bottom-6 right-6 z-50">

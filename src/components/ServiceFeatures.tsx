@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Shield, DollarSign, Compass } from 'lucide-react';
+import { Shield, DollarSign, Compass, Ticket,Map } from 'lucide-react';
 
 const ServiceFeatures: React.FC = () => {
   const features = [
@@ -13,14 +13,16 @@ const ServiceFeatures: React.FC = () => {
     {
       title: "Affordable Adventures",
       description: "Delivering budget-friendly travel options without compromising on quality, offering remarkable experiences at unbeatable prices.",
-      icon: DollarSign,
-      color: "text-green-500"
+      icon: Ticket,
+      color: "text-green-600",
+      bgColor: "bg-green-50"
     },
     {
       title: "Expert Guidance",
       description: "Access to knowledgeable travel experts helps you to take informed decisions and maximize travel experiences.",
-      icon: Compass,
-      color: "text-deepblue"
+      icon: Map,
+      color: "text-blue-900", // deepblue
+      bgColor: "bg-blue-50"
     }
   ];
 
