@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
-import { useIsMobile } from '@/hooks/use-mobile';
 import { 
   Drawer, 
   DrawerClose, 
@@ -9,7 +8,6 @@ import {
   DrawerOverlay, 
   DrawerTrigger 
 } from '@/components/ui/drawer';
-import logo from '../../public/da.svg';
 
 const Navbar: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -18,7 +16,7 @@ const Navbar: React.FC = () => {
   
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
+      setScrolled(window.scrollY > 10);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
@@ -36,45 +34,47 @@ const Navbar: React.FC = () => {
   return (
     <header className={`fixed w-full z-40 transition-all duration-500 ease-in-out ${
       scrolled 
-        ? 'bg-white/95 backdrop-blur-md shadow-lg py-2' 
-        : 'bg-transparent py-5'
+        ? 'bg-white/95 backdrop-blur-md shadow-lg py-1' 
+        : 'bg-transparent py-4'
     }`}>
       <div className="container mx-auto px-6">
         <div className="flex justify-between items-center">
           
           {/* Logo Section */}
           <Link to="/home" className="flex items-center group">
-            <div className={`w-12 h-12 mr-3 p-2 rounded-full transition-all duration-300 flex items-center justify-center ${
-              scrolled ? 'bg-raaz/10' : 'bg-white'
+            <div className={`transition-all duration-500 ease-out flex items-center justify-center ${
+              scrolled ? 'w-16 h-16' : 'w-28 h-28'
             }`}>
-              <img src={logo} className="w-full h-full object-contain" alt="RAAZ Logo" />
+              <img 
+                src="/logo.png" 
+                alt="RAAZ Logo"
+                className={`w-full h-full object-contain transition-all duration-500 group-hover:scale-110 ${
+                  // When NOT scrolled (on dark hero), invert to white. 
+                  // When scrolled (on white bg), keep original (black).
+                  !scrolled ? 'brightness-0 invert' : ''
+                }`} 
+              />
             </div>
-            <h1 className={`text-xl sm:text-2xl font-bold font-playfair tracking-wide transition-colors duration-300 ${
-              scrolled ? 'text-raaz-dark' : 'text-white text-shadow-lg'
-            }`}>
-              <span className={scrolled ? 'text-raaz' : 'text-white'}>RAAZ</span> Holidays
-            </h1>
           </Link>
           
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-10">
+          <nav className="hidden md:flex items-center space-x-12">
             {menuLinks.map(link => {
               const isActive = location.pathname === link.path;
               return (
                 <Link 
                   key={link.path}
                   to={link.path} 
-                  className={`relative font-medium transition-all duration-300 py-1 group ${
+                  className={`relative font-semibold text-base transition-all duration-300 py-1 group ${
                     isActive 
                       ? (scrolled ? 'text-raaz' : 'text-white') 
                       : (scrolled ? 'text-deepblue hover:text-raaz' : 'text-white/90 hover:text-white')
                   }`}
                 >
                   {link.label}
-                  {/* Underline Logic */}
-                  <span className={`absolute bottom-0 left-0 w-full h-0.5 transform origin-left transition-transform duration-300 ${
+                  <span className={`absolute -bottom-1 left-0 h-0.5 transform origin-left transition-all duration-300 ${
                     scrolled ? 'bg-raaz' : 'bg-white'
-                  } ${isActive ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`} />
+                  } ${isActive ? 'w-full scale-x-100' : 'w-full scale-x-0 group-hover:scale-x-100'}`} />
                 </Link>
               );
             })}
@@ -85,27 +85,29 @@ const Navbar: React.FC = () => {
             <Drawer open={drawerOpen} onOpenChange={setDrawerOpen}>
               <DrawerTrigger asChild>
                 <button 
-                  className={`flex items-center justify-center rounded-xl w-11 h-11 transition-all shadow-sm ${
+                  className={`flex items-center justify-center rounded-xl w-12 h-12 transition-all shadow-md ${
                     scrolled ? 'bg-raaz text-white' : 'bg-white text-raaz'
                   }`}
                   aria-label="Toggle Menu"
                 >
-                  <Menu size={24} />
+                  <Menu size={28} />
                 </button>
               </DrawerTrigger>
               <DrawerOverlay className="bg-black/40 backdrop-blur-sm" />
-              <DrawerContent className="h-full w-[280px] right-0 left-auto rounded-l-3xl shadow-2xl p-0 bg-white border-l border-gold/20">
+              <DrawerContent className="h-full w-[300px] right-0 left-auto rounded-l-[2.5rem] shadow-2xl p-0 bg-white border-l border-gold/10">
                 <div className="flex flex-col h-full">
-                  <div className="flex justify-between items-center p-6 border-b border-gray-50">
-                    <span className="text-xl font-bold font-playfair">
-                      <span className="text-raaz">RAAZ</span> Holidays
-                    </span>
-                    <DrawerClose className="p-2 rounded-full hover:bg-gray-100 text-deepblue transition-colors">
-                      <X size={20} />
+                  
+                  {/* Mobile Header - Logo remains original color on white drawer */}
+                  <div className="flex flex-col items-center justify-center p-10 border-b border-gray-50 bg-gray-50 relative">
+                    <div className="w-24 h-24">
+                       <img src="/logo.png" className="w-full h-full object-contain" alt="RAAZ Logo" />
+                    </div>
+                    <DrawerClose className="absolute top-6 right-6 p-2 rounded-full hover:bg-gray-200 text-deepblue transition-colors">
+                      <X size={24} />
                     </DrawerClose>
                   </div>
                   
-                  <nav className="flex flex-col p-6 space-y-4">
+                  <nav className="flex flex-col p-8 space-y-6">
                     {menuLinks.map(link => {
                       const isActive = location.pathname === link.path;
                       return (
@@ -113,14 +115,14 @@ const Navbar: React.FC = () => {
                           <Link 
                             to={link.path}
                             onClick={closeDrawer}
-                            className={`py-3 px-4 text-lg font-medium rounded-xl transition-all duration-300 flex items-center justify-between ${
+                            className={`py-4 px-6 text-xl font-bold rounded-2xl transition-all duration-300 flex items-center justify-between ${
                               isActive 
-                                ? 'bg-raaz/10 text-raaz translate-x-2' 
-                                : 'text-deepblue hover:bg-gray-50'
+                                ? 'bg-raaz text-white shadow-lg translate-x-2' 
+                                : 'text-deepblue hover:bg-gray-100'
                             }`}
                           >
                             {link.label}
-                            {isActive && <div className="w-1.5 h-1.5 rounded-full bg-raaz" />}
+                            {isActive && <div className="w-2 h-2 rounded-full bg-white animate-pulse" />}
                           </Link>
                         </DrawerClose>
                       );
